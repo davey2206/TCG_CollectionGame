@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<h1>Collection</h1>
+
+<select id="mySelect" onchange="myfunction()">
+    <option disabled selected> -- select an option -- </option>
+    @foreach (var set in ViewData["sets"] as List<string>)
+    {
+        <option value="/Home/Collection/3?sName=@set.ToString()">
+            @set.ToString()
+        </option>
+    }
+</select>
+
+<script>
+    function myfunction() {
+        var e = document.getElementById("mySelect")
+        window.location = e.options[e.selectedIndex].value;
+    }
+</script>
