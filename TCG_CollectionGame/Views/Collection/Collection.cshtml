@@ -8,7 +8,7 @@
     <div class="col-10" style="overflow: auto; max-height: 80vh;">
         @foreach (var card in ViewData["cards"] as List<string>)
         {
-            <img src="@card.ToString()" style="padding: 10px;" />
+            <img id="card_img" src="@card.ToString()" style="padding: 10px;" />
         }
     </div>
     <div class="col-1">

@@ -1,16 +1,24 @@
 ﻿body {
+    background-color: #867393;
     background-image: url(/img/background3.jpg);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 h1{
     color: white;
 }
 #button_container {
-    width: 150%;
+    width: 20vh;
     position: relative;
     text-align: center;
     color: white;
+    transition: all 0.6s cubic-bezier(.58,-1.09,.31,1.97);
+}
+#button_container:hover{
+    width: 25vh;
+}
+#button_container:active{
+    width: 23vh;
 }
 #button_text {
     pointer-events: none;
@@ -18,4 +26,11 @@ h1{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+#card_img{
+    width: 30vh;
+    transition: all 0.5s;
+}
+#card_img:hover {
+    width: 35vh;
 }
