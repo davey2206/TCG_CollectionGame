@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Collection";
+}
+@section css {
+    <link href="@Url.Content("~/css/Collection.css")" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-10" style="overflow: auto; max-height: 80vh;">
+        @foreach (var card in ViewData["cards"] as List<string>)
+        {
+            <img src="@card.ToString()" style="padding: 10px;" />
+        }
+    </div>
+    <div class="col-1">
+        <div id="button_container">
+            <a asp-controller="Home" asp-action="index">
+                <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+            </a>
+            <div id="button_text">back</div>
+        </div>
+        <h1 class="mt-5">Collection</h1>
+        <select id="mySelect" onchange="myfunction()">
+            <option disabled selected> -- select an option -- </option>
+            @foreach (var set in ViewData["sets"] as List<string>)
+            {
+                <option value="/Collection/Collection/3?sName=@set.ToString()">
+                    @set.ToString()
+                </option>
+            }
+        </select>
+    </div>
+</div>
+
+<script>
+    function myfunction() {
+        var e = document.getElementById("mySelect")
+        window.location = e.options[e.selectedIndex].value;
+    }
+</script>

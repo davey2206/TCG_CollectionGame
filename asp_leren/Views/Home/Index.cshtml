@@ -1,21 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
-<h1>Collection</h1>
+@section css {
+    <link href="@Url.Content("~/css/Home.css")" rel="stylesheet" />
+}
 
-<select id="mySelect" onchange="myfunction()">
-    <option disabled selected> -- select an option -- </option>
-    @foreach (var set in ViewData["sets"] as List<string>)
-    {
-        <option value="/Home/Collection/3?sName=@set.ToString()">
-            @set.ToString()
-        </option>
-    }
-</select>
-
-<script>
-    function myfunction() {
-        var e = document.getElementById("mySelect")
-        window.location = e.options[e.selectedIndex].value;
-    }
-</script>
+<div id="main">
+    <div id="button_container">
+        <a asp-controller="" asp-action="index">
+            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+        </a>
+        <div id="button_text">Mini Game</div>
+    </div>
+</div>
+<div id="main" class="mt-3">
+    <div id="button_container">
+        <a asp-controller="" asp-action="index">
+            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+        </a>
+        <div id="button_text">Trading</div>
+    </div>
+</div>
+<div id="main" class="mt-3">
+    <div id="button_container">
+        <a asp-controller="Collection" asp-action="index">
+            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+        </a>
+        <div id="button_text">Collection</div>
+    </div>
+</div>
+<div id="main" class="mt-5">
+    <div id="button_container_big">
+        <a asp-controller="" asp-action="index">
+            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+        </a>
+        <div id="button_text">Open packs</div>
+    </div>
+</div>
