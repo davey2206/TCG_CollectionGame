@@ -1,4 +1,4 @@
-﻿using asp_leren.Models;
+﻿using TCG_CollectionGame.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace asp_leren.Controllers
+namespace TCG_CollectionGame.Controllers
 {
     public class HomeController : Controller
     {

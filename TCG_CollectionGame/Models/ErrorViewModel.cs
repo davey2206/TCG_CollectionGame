@@ -1,6 +1,6 @@
 using System;
 
-namespace asp_leren.Models
+namespace TCG_CollectionGame.Models
 {
     public class ErrorViewModel
     {

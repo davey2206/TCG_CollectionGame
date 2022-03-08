@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG_CollectionGame", "asp_leren\TCG_CollectionGame.csproj", "{CBD92FDB-6390-412A-8BE3-12013FD69D10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCG_CollectionGame", "TCG_CollectionGame\TCG_CollectionGame.csproj", "{CBD92FDB-6390-412A-8BE3-12013FD69D10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

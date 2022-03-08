@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PokemonTcgSdk;
 
-namespace asp_leren.Controllers
+namespace TCG_CollectionGame.Controllers
 {
     public class CollectionController : Controller
     {

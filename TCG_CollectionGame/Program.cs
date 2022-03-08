@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace asp_leren
+namespace TCG_CollectionGame
 {
     public class Program
     {
