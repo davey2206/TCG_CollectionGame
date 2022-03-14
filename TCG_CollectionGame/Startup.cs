@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TCG_CollectionGame.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TCG_CollectionGame
 {
@@ -24,6 +26,7 @@ namespace TCG_CollectionGame
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<TCG_CollectionGameContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TCG_CollectionGameContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
