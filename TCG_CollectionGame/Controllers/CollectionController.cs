@@ -28,10 +28,7 @@ namespace TCG_CollectionGame.Controllers
             try
             {
                 var sets = Sets.All();
-                while (sets == null || sets.Count == 0)
-                {
-                    sets = Sets.All();
-                }
+                sets = Sets.All();
                 foreach (var set in sets)
                 {
                     lSets.Add(set.Name);

@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CMK_Rockstars_Proftaak_Groep2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+<body>
+    <div class="div-center">
+        <div class="content">
+            <div id="div_logo">
+                <img id="logo" src="~/img/Logo.png" width="500vh" />
+            </div>
+            <form asp-controller="users" asp-action="create">
+                <div class="form-group mt-5">
+                    <input name="Username" id="login_input" type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input name="Password" id="login_input" type="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" id="btn_login">register</button>
+                    </div>
+                    <div class="col">
+                        <a asp-action="index" asp-controller="login" class="btn btn-primary" id="btn_login">back</a>
+                    </div>
+                </div>
+                <input name="Coin" type="number" value="100" hidden>
+            </form>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

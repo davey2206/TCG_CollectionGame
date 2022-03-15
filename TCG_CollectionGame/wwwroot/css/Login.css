@@ -1,0 +1,57 @@
+﻿body {
+    background-image: url("/img/background3.jpg");
+}
+
+.div-center {
+    text-align: center;
+    width: 10vh;
+    height: 10vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto;
+    padding: 1em 2em;
+    display: table;
+}
+
+div.content {
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#btn_login {
+    width: 90%;
+    background-color: #bf0000;
+    color: white;
+    border: solid #ee0000;
+    transition: all 0.5s;
+}
+
+    #btn_login:hover {
+        width: 100%;
+        color: #e80000;
+        font-weight: bold;
+        background-color: #232323;
+    }
+    #btn_login:active {
+        color: #f70000;
+        font-weight: bolder;
+        background-color: #171717;
+    }
+
+#div_logo {
+    text-align: center;
+}
+
+#login_input {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+#login_input::placeholder {
+    color: #cccccc;
+    font-weight: bold;
+}
