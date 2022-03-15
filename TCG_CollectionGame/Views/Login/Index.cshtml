@@ -16,12 +16,12 @@
             <div id="div_logo">
                 <img id="logo" src="~/img/Logo.png" width="500vh" />
             </div>
-            <form>
+            <form asp-controller="users" asp-action="check">
                 <div class="form-group mt-5">
-                    <input id="login_input" type="text" class="form-control" placeholder="Username">
+                    <input name="Username" id="login_input" type="text" class="form-control" placeholder="Username">
                 </div>
                 <div class="form-group">
-                    <input id="login_input" type="password" class="form-control" placeholder="Password">
+                    <input name="Password" id="login_input" type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="row">
                     <div class="col">

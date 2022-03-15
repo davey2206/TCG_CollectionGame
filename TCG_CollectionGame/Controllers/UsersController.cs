@@ -24,9 +24,13 @@ namespace TCG_CollectionGame.Controllers
 
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
         {
-            _context.User.Any(e => e.Username == user.Username);
+            User u = _context.User.FirstOrDefault(e => e.Username == user.Username);
+            if (BCrypt.Net.BCrypt.Verify(user.Password, u.Password))
+            {
+                return RedirectToAction("index", "Home");
+            }
 
-            return null;
+            return RedirectToAction("index", "Login");
         }
 
         // POST: Users/Create
@@ -38,19 +42,7 @@ namespace TCG_CollectionGame.Controllers
         {
             if (ModelState.IsValid)
             {
-                byte[] salt = new byte[128 / 8];
-                using (var rngCsp = new RNGCryptoServiceProvider())
-                {
-                    rngCsp.GetNonZeroBytes(salt);
-                }
-
-                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: user.Password,
-                    salt: salt,
-                    prf: KeyDerivationPrf.HMACSHA256,
-                    iterationCount: 100000,
-                    numBytesRequested: 256 / 8));
-
+                string hashed = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 user.Password = hashed;
 
                 _context.Add(user);
