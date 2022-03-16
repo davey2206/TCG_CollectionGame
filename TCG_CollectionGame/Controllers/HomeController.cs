@@ -14,6 +14,10 @@ namespace TCG_CollectionGame.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData.Peek("userID") == null)
+            {
+                return RedirectToAction("index", "Login");
+            }
             return View();
         }
     }

@@ -55,3 +55,9 @@ div.content {
     color: #cccccc;
     font-weight: bold;
 }
+#msg{
+    -webkit-text-stroke-width: medium;
+    -webkit-text-stroke-color: black;
+    font-weight: 900;
+    color: red;
+}

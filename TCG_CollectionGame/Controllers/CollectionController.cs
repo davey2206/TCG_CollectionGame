@@ -11,12 +11,20 @@ namespace TCG_CollectionGame.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData.Peek("userID") == null)
+            {
+                return RedirectToAction("index", "Login");
+            }
             ViewData["sets"] = getSets();
             return View();
         }
 
         public IActionResult Collection(string sName)
         {
+            if (TempData.Peek("userID") == null)
+            {
+                return RedirectToAction("index", "Login");
+            }
             ViewData["sets"] = getSets();
             ViewData["cards"] = getCards(sName);
             return View();
