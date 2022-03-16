@@ -46,8 +46,6 @@ namespace TCG_CollectionGame.Controllers
             {
 
             }
-            
-
             return lSets;
         }
 
@@ -79,8 +77,6 @@ namespace TCG_CollectionGame.Controllers
             {
 
             }
-
-
             return lCards;
         }
     }

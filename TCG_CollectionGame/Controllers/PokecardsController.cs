@@ -19,36 +19,6 @@ namespace TCG_CollectionGame.Controllers
             _context = context;
         }
 
-        // GET: Pokecards
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Pokecard.ToListAsync());
-        }
-
-        // GET: Pokecards/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pokecard = await _context.Pokecard
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (pokecard == null)
-            {
-                return NotFound();
-            }
-
-            return View(pokecard);
-        }
-
-        // GET: Pokecards/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
         // POST: Pokecards/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -61,22 +31,6 @@ namespace TCG_CollectionGame.Controllers
                 _context.Add(pokecard);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(pokecard);
-        }
-
-        // GET: Pokecards/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pokecard = await _context.Pokecard.FindAsync(id);
-            if (pokecard == null)
-            {
-                return NotFound();
             }
             return View(pokecard);
         }
@@ -114,35 +68,6 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(pokecard);
-        }
-
-        // GET: Pokecards/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pokecard = await _context.Pokecard
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (pokecard == null)
-            {
-                return NotFound();
-            }
-
-            return View(pokecard);
-        }
-
-        // POST: Pokecards/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var pokecard = await _context.Pokecard.FindAsync(id);
-            _context.Pokecard.Remove(pokecard);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool PokecardExists(int id)

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@section css {
+    <link href="@Url.Content("~/css/Pack.css")" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-4" id="menu_col">
+        <div id="button_container">
+            <a asp-controller="Home" asp-action="index">
+                <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+            </a>
+            <div id="button_text">back</div>
+        </div>
+        <h1 id="SelectText">Sets</h1>
+        <select id="mySelect">
+            <option disabled selected>-- select an option --</option>
+            @foreach (var set in ViewData["sets"] as List<string>)
+            {
+                <option value="/Pack/Open/3?sName=@set.ToString()">
+                    @set.ToString()
+                </option>
+            }
+        </select>
+        <div id="Coin_container">
+            <img id="Coin" src="~/img/PokeCoin.png" width="100%" />
+            <div id="Coin_text">25</div>
+        </div>
+        <div id="button_container_big" class="mt-5">
+            <a onclick="myfunction()">
+                <img id="Buy" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+            </a>
+            <div id="button_text_big">Open Pack</div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myfunction() {
+        var e = document.getElementById("mySelect")
+        if (e.selectedIndex != 0) {
+            window.location = e.options[e.selectedIndex].value;
+        }
+    }
+</script>

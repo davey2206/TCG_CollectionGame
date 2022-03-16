@@ -1,0 +1,91 @@
+﻿body {
+    background-color: #867393;
+    background-image: url(/img/background2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#menu_col {
+    text-align: -webkit-right;
+}
+h1 {
+    color: white;
+}
+#SelectText {
+    margin-top: 15vh;
+}
+
+#Coin_container {
+    margin-top: 2vh;
+    width: 20vh;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+#Coin_text {
+    pointer-events: none;
+    position: absolute;
+    font-size: 5vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#button_container {
+    width: 20vh;
+    position: relative;
+    text-align: center;
+    color: white;
+    transition: all 0.6s cubic-bezier(.58,-1.09,.31,1.97);
+}
+
+    #button_container:hover {
+        width: 25vh;
+    }
+
+    #button_container:active {
+        width: 23vh;
+    }
+
+#button_container_big {
+    width: 35vh;
+    position: relative;
+    text-align: center;
+    color: white;
+    transition: all 0.6s cubic-bezier(.58,-1.09,.31,1.97);
+}
+
+    #button_container_big:hover {
+        width: 40vh;
+    }
+
+    #button_container_big:active {
+        width: 38vh;
+    }
+
+#button_text {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#button_text_big {
+    font-size: 3vh;
+    font-weight: bold;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#card_img {
+    width: 30vh;
+    transition: all 0.5s;
+}
+
+    #card_img:hover {
+        width: 35vh;
+    }
