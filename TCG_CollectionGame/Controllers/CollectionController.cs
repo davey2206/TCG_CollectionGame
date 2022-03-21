@@ -11,7 +11,7 @@ namespace TCG_CollectionGame.Controllers
     {
         public IActionResult Index()
         {
-            if (TempData.Peek("userID") == null)
+            if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }
@@ -21,7 +21,7 @@ namespace TCG_CollectionGame.Controllers
 
         public IActionResult Collection(string sName)
         {
-            if (TempData.Peek("userID") == null)
+            if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }

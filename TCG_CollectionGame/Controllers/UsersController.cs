@@ -32,8 +32,8 @@ namespace TCG_CollectionGame.Controllers
             }
             else if (BCrypt.Net.BCrypt.Verify(user.Password, u.Password))
             {
-                TempData["userID"] = user.ID;
-                TempData["username"] = user.Username;
+                TempData["userID"] = u.ID;
+                TempData["username"] = u.Username;
                 return RedirectToAction("index", "Home");
             }
             TempData["ErrorMessage"] = "Username or password is incorrect";
