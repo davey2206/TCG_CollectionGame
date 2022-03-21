@@ -16,10 +16,12 @@ namespace TCG_CollectionGame.Controllers
     public class UsersController : Controller
     {
         private readonly TCG_CollectionGameContext _context;
+        private UserManager userManager;
 
         public UsersController(TCG_CollectionGameContext context)
         {
             _context = context;
+            userManager = new UserManager(context);
         }
 
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
@@ -50,7 +52,7 @@ namespace TCG_CollectionGame.Controllers
             
             if (ModelState.IsValid)
             {
-                if (UserExists(user.Username))
+                if (userManager.UserExists(user.Username))
                 {
                     TempData["ErrorMessage"] = "This Username is already taken";
                     return RedirectToAction("Register", "Login");
@@ -60,8 +62,7 @@ namespace TCG_CollectionGame.Controllers
                     string hashed = BCrypt.Net.BCrypt.HashPassword(user.Password);
                     user.Password = hashed;
 
-                    _context.Add(user);
-                    await _context.SaveChangesAsync();
+                    userManager.AddUser(user);
                     TempData["ErrorMessage"] = "Successfully created your acount";
                     return RedirectToAction("index", "Login");
                 }
@@ -91,7 +92,7 @@ namespace TCG_CollectionGame.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Username))
+                    if (!userManager.UserExists(user.Username))
                     {
                         return NotFound();
                     }
@@ -103,11 +104,6 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
-        }
-
-        private bool UserExists(string U)
-        {
-            return _context.User.Any(e => e.Username == U);
         }
     }
 }

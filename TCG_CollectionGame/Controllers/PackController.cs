@@ -5,11 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using PokemonTcgSdk;
 using TCG_CollectionGame.Models;
+using TCG_CollectionGame.Data;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class PackController : Controller
     {
+        private readonly TCG_CollectionGameContext _context;
+        private CardManager cardManager;
+
+        public PackController(TCG_CollectionGameContext context)
+        {
+            _context = context;
+            cardManager = new CardManager(context);
+            
+        }
+
         public IActionResult Index()
         {
             if (TempData.Peek("username") == null)
@@ -68,6 +79,8 @@ namespace TCG_CollectionGame.Controllers
 
             foreach (var pokecard in PokeCardsId)
             {
+                cardManager.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, pokecard));
+
                 var card = Card.Find<Pokemon>(pokecard);
                 PokeCardsImg.Add(card.Card.ImageUrl);
             }
