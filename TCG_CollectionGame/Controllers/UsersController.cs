@@ -15,18 +15,16 @@ namespace TCG_CollectionGame.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly TCG_CollectionGameContext _context;
         private UserManager userManager;
 
         public UsersController(TCG_CollectionGameContext context)
         {
-            _context = context;
             userManager = new UserManager(context);
         }
 
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
         {
-            User u = _context.User.FirstOrDefault(e => e.Username == user.Username);
+            var u = userManager.getUser(user);
             if (u == null)
             {
                 TempData["ErrorMessage"] = "Username or password is incorrect";
@@ -74,36 +72,36 @@ namespace TCG_CollectionGame.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Username,Password,Coin")] User user)
-        {
-            if (id != user.ID)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("ID,Username,Password,Coin")] User user)
+        //{
+        //    if (id != user.ID)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!userManager.UserExists(user.Username))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(user);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!userManager.UserExists(user.Username))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(user);
+        //}
     }
 }

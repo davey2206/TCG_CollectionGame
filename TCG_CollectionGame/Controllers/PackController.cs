@@ -11,42 +11,40 @@ namespace TCG_CollectionGame.Controllers
 {
     public class PackController : Controller
     {
-        private readonly TCG_CollectionGameContext _context;
         private CardManager cardManager;
 
         public PackController(TCG_CollectionGameContext context)
         {
-            _context = context;
             cardManager = new CardManager(context);
             
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
             if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }
 
-            ViewData["sets"] = getSets();
+            ViewData["sets"] = await getSetsAsync();
             return View();
         }
 
-        public IActionResult Open(string sName)
+        public async Task<IActionResult> OpenAsync(string sName)
         {
             if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }
 
-            ViewData["cards"] = getCards(sName);
-            ViewData["sets"] = getSets();
+            ViewData["cards"] = await getCardsAsync(sName);
+            ViewData["sets"] = await getSetsAsync();
             return View();
         }
 
-        public List<string> getCards(string sName)
+        public async Task<List<string>> getCardsAsync(string sName)
         {
-            var sets = Sets.All();
+            var sets = await Sets.AllAsync();
             string code = null;
             List<string> AllPokeCards = new List<string>();
             List<string> PokeCardsId = new List<string>();
@@ -65,7 +63,7 @@ namespace TCG_CollectionGame.Controllers
             {
                 { "setCode", code }
             };
-            var cards = Card.Get(query);
+            var cards = await Card.GetAsync(query);
             foreach (var card in cards.Cards)
             {
                 AllPokeCards.Add(card.Id);
@@ -81,20 +79,19 @@ namespace TCG_CollectionGame.Controllers
             {
                 cardManager.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, pokecard));
 
-                var card = Card.Find<Pokemon>(pokecard);
+                var card = await Card.FindAsync<Pokemon>(pokecard);
                 PokeCardsImg.Add(card.Card.ImageUrl);
             }
 
             return PokeCardsImg;
         }
 
-        public List<string> getSets()
+        public async Task<List<string>> getSetsAsync()
         {
             List<string> lSets = new List<string>();
             try
             {
-                var sets = Sets.All();
-                sets = Sets.All();
+                var sets = await Sets.AllAsync();
                 foreach (var set in sets)
                 {
                     lSets.Add(set.Name);

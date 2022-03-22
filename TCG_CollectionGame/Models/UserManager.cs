@@ -20,10 +20,16 @@ namespace TCG_CollectionGame.Models
             return _context.User.Any(e => e.Username == U);
         }
 
-        public async void AddUser(User user)
+        public void AddUser(User user)
         {
             _context.User.Add(user);
             _context.SaveChanges();
+        }
+
+        public User getUser(User user)
+        {
+            User u = _context.User.FirstOrDefault(e => e.Username == user.Username);
+            return u;
         }
     }
 }

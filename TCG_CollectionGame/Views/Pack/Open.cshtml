@@ -5,7 +5,7 @@
     <link href="@Url.Content("~/css/Pack.css")" rel="stylesheet" />
 }
 <div class="row">
-    <div class="col" style="overflow: auto; max-height: 80vh;">
+    <div class="col" style="overflow: auto; max-height: 90vh;">
         @foreach (var card in ViewData["cards"] as List<string>)
         {
             <img id="card_img" src="@card.ToString()" style="padding: 10px;" />
