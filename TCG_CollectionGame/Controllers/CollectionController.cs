@@ -4,11 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PokemonTcgSdk;
+using TCG_CollectionGame.Models;
+using TCG_CollectionGame.Data;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class CollectionController : Controller
     {
+        private  CardManager cardManager;
+
+        public CollectionController(TCG_CollectionGameContext context)
+        {
+            cardManager = new CardManager(context);
+        }
+
         public async Task<IActionResult> Index()
         {
             if (TempData.Peek("username") == null)
@@ -62,14 +71,11 @@ namespace TCG_CollectionGame.Controllers
                         code = set.Code;
                     }
                 }
-                Dictionary<string, string> query = new Dictionary<string, string>()
+                List<string> cards = cardManager.getCards(code, int.Parse(TempData.Peek("userID").ToString()));
+                foreach (var card in cards)
                 {
-                    { "setCode", code }
-                };
-                var cards = await Card.GetAsync(query);
-                foreach (var card in cards.Cards)
-                {
-                    lCards.Add(card.ImageUrl);
+                    var pokeCard = await Card.FindAsync<Pokemon>(card);
+                    lCards.Add(pokeCard.Card.ImageUrl);
                 }
             }
             catch (Exception)
