@@ -21,10 +21,10 @@
         <h1 id="SelectText">Sets</h1>
         <select id="mySelect">
             <option disabled selected>-- select an option --</option>
-            @foreach (var set in ViewData["sets"] as List<string>)
+            @foreach (var set in ViewData["sets"] as List<Pokeset>)
             {
-                <option value="/Pack/Open/3?sName=@set.ToString()">
-                    @set.ToString()
+                <option value="/Pack/Open/3?Code=@set.SetCode.ToString()">
+                    @set.SetName.ToString()
                 </option>
             }
         </select>

@@ -21,10 +21,10 @@
         <h1 class="mt-5">Collection</h1>
         <select id="mySelect" onchange="myfunction()">
             <option disabled selected> -- select an option -- </option>
-            @foreach (var set in ViewData["sets"] as List<string>)
+            @foreach (var set in ViewData["sets"] as List<Pokeset>)
             {
-                <option value="/Collection/Collection/3?sName=@set.ToString()">
-                    @set.ToString()
+                <option value="/Collection/Collection/3?Code=@set.SetCode.ToString()">
+                    @set.SetName.ToString()
                 </option>
             }
         </select>

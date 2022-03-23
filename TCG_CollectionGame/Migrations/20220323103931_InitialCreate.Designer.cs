@@ -9,7 +9,7 @@ using TCG_CollectionGame.Data;
 namespace TCG_CollectionGame.Migrations
 {
     [DbContext(typeof(TCG_CollectionGameContext))]
-    [Migration("20220322133310_InitialCreate")]
+    [Migration("20220323103931_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,24 @@ namespace TCG_CollectionGame.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Pokecard");
+                });
+
+            modelBuilder.Entity("TCG_CollectionGame.Models.Pokeset", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SetCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Pokeset");
                 });
 
             modelBuilder.Entity("TCG_CollectionGame.Models.User", b =>

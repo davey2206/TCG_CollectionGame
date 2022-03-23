@@ -23,6 +23,20 @@ namespace TCG_CollectionGame.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pokeset",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SetCode = table.Column<string>(nullable: true),
+                    SetName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pokeset", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
@@ -42,6 +56,9 @@ namespace TCG_CollectionGame.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Pokecard");
+
+            migrationBuilder.DropTable(
+                name: "Pokeset");
 
             migrationBuilder.DropTable(
                 name: "User");
