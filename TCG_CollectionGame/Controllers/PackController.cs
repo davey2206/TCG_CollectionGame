@@ -47,8 +47,9 @@ namespace TCG_CollectionGame.Controllers
             var sets = await Sets.AllAsync();
             string code = null;
             List<string> AllPokeCards = new List<string>();
-            List<string> PokeCardsId = new List<string>();
+            List<string> AllPokeCardsImg = new List<string>();
             List<string> PokeCardsImg = new List<string>();
+            List<string> PokeCardsId = new List<string>();
             Random rng = new Random();
 
             foreach (var set in sets)
@@ -67,20 +68,19 @@ namespace TCG_CollectionGame.Controllers
             foreach (var card in cards.Cards)
             {
                 AllPokeCards.Add(card.Id);
+                AllPokeCardsImg.Add(card.ImageUrl);
             }
 
             for (int i = 0; i < 5; i++)
             {
                 int index = rng.Next(AllPokeCards.Count);
                 PokeCardsId.Add(AllPokeCards[index]);
+                PokeCardsImg.Add(AllPokeCardsImg[index]);
             }
 
-            foreach (var pokecard in PokeCardsId)
+            for (int i = 0; i < PokeCardsId.Count; i++)
             {
-                cardManager.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, pokecard));
-
-                var card = await Card.FindAsync<Pokemon>(pokecard);
-                PokeCardsImg.Add(card.Card.ImageUrl);
+                cardManager.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, PokeCardsId[i], PokeCardsImg[i]));
             }
 
             return PokeCardsImg;

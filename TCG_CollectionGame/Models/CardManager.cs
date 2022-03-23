@@ -27,7 +27,7 @@ namespace TCG_CollectionGame.Models
             var cards = _context.Pokecard.Where(e => e.SetCode == setCode && e.UserId == userId);
             foreach (var card in cards)
             {
-                cardIds.Add(card.CardCode);
+                cardIds.Add(card.CardImg);
             }
             return cardIds;
         }

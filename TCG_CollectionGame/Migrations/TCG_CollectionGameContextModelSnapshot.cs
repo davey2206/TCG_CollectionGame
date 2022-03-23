@@ -28,6 +28,9 @@ namespace TCG_CollectionGame.Migrations
                     b.Property<string>("CardCode")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CardImg")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SetCode")
                         .HasColumnType("nvarchar(max)");
 

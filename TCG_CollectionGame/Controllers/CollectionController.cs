@@ -74,8 +74,7 @@ namespace TCG_CollectionGame.Controllers
                 List<string> cards = cardManager.getCards(code, int.Parse(TempData.Peek("userID").ToString()));
                 foreach (var card in cards)
                 {
-                    var pokeCard = await Card.FindAsync<Pokemon>(card);
-                    lCards.Add(pokeCard.Card.ImageUrl);
+                    lCards.Add(card);
                 }
             }
             catch (Exception)

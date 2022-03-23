@@ -9,7 +9,7 @@ using TCG_CollectionGame.Data;
 namespace TCG_CollectionGame.Migrations
 {
     [DbContext(typeof(TCG_CollectionGameContext))]
-    [Migration("20220314102148_InitialCreate")]
+    [Migration("20220322133310_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,9 @@ namespace TCG_CollectionGame.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CardCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SetCode")

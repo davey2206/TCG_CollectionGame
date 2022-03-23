@@ -14,7 +14,8 @@ namespace TCG_CollectionGame.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     SetCode = table.Column<string>(nullable: true),
-                    CardCode = table.Column<string>(nullable: true)
+                    CardCode = table.Column<string>(nullable: true),
+                    CardImg = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
