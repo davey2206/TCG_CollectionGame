@@ -6,11 +6,11 @@ using TCG_CollectionGame.Data;
 
 namespace TCG_CollectionGame.Models
 {
-    public class SetMananger
+    public class SetManager
     {
         private readonly TCG_CollectionGameContext _context;
 
-        public SetMananger(TCG_CollectionGameContext context)
+        public SetManager(TCG_CollectionGameContext context)
         {
             _context = context;
         }

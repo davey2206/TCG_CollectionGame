@@ -12,13 +12,12 @@ namespace TCG_CollectionGame.Controllers
     public class PackController : Controller
     {
         private CardManager cardManager;
-        private SetMananger setMananger;
+        private SetManager setManager;
 
         public PackController(TCG_CollectionGameContext context)
         {
             cardManager = new CardManager(context);
-            setMananger = new SetMananger(context);
-            
+            setManager = new SetManager(context);
         }
 
         public IActionResult Index()
@@ -82,16 +81,14 @@ namespace TCG_CollectionGame.Controllers
             }
             catch (Exception)
             {
-
             }
-            
 
             return PokeCardsImg;
         }
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setMananger.getSets();
+            List<Pokeset> sets = setManager.getSets();
 
             return sets;
         }

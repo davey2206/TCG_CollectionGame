@@ -12,12 +12,12 @@ namespace TCG_CollectionGame.Controllers
     public class CollectionController : Controller
     {
         private CardManager cardManager;
-        private SetMananger setMananger;
+        private SetManager setManager;
 
         public CollectionController(TCG_CollectionGameContext context)
         {
             cardManager = new CardManager(context);
-            setMananger = new SetMananger(context);
+            setManager = new SetManager(context);
         }
 
         public async Task<IActionResult> Index()
@@ -43,7 +43,7 @@ namespace TCG_CollectionGame.Controllers
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setMananger.getSets();
+            List<Pokeset> sets = setManager.getSets();
 
             return sets;
         }
@@ -61,7 +61,6 @@ namespace TCG_CollectionGame.Controllers
             }
             catch (Exception)
             {
-
             }
             return lCards;
         }
