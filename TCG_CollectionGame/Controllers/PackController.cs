@@ -18,7 +18,6 @@ namespace TCG_CollectionGame.Controllers
         {
             cardManager = new CardManager(context);
             setMananger = new SetMananger(context);
-            
         }
 
         public IActionResult Index()

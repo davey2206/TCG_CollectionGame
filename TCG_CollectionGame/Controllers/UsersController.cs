@@ -24,7 +24,7 @@ namespace TCG_CollectionGame.Controllers
 
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
         {
-            var u = userManager.getUser(user);
+            var u = userManager.getUser(user.Username);
             if (u == null)
             {
                 TempData["ErrorMessage"] = "Username or password is incorrect";
