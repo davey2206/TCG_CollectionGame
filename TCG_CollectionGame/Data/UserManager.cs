@@ -31,5 +31,11 @@ namespace TCG_CollectionGame.Models
             User u = _context.User.FirstOrDefault(e => e.Username == user);
             return u;
         }
+
+        public void updateUser(User user)
+        {
+            _context.Update(user);
+            _context.SaveChanges();
+        }
     }
 }

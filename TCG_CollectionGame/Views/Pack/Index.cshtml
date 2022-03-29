@@ -15,6 +15,9 @@
             </a>
             <div id="button_text">back</div>
         </div>
+        <div>
+            <h2 class="mt-3" style="color: white;">@ViewBag.user.Coin<img id="Coin" src="~/img/PokeCoin.png" width="10%" class="ml-3" /></h2>
+        </div>
         <h1 id="SelectText">Sets</h1>
         <select id="mySelect">
             <option disabled selected>-- select an option --</option>
@@ -46,4 +49,10 @@
             window.location = e.options[e.selectedIndex].value;
         }
     }
+
+    function CoinFlip() {
+        document.getElementById("Coin_container").classList.toggle("active");
+        setTimeout(CoinFlip, 10000)
+    }
+    CoinFlip();
 </script>
