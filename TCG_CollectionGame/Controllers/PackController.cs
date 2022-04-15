@@ -105,7 +105,7 @@ namespace TCG_CollectionGame.Controllers
         {
             User u = userManager.getUser(TempData.Peek("username").ToString());
 
-            if (u.Coin !> 25)
+            if (u.Coin !>= 25)
             {
                 u.Coin = u.Coin - 25;
                 userManager.updateUser(u);
