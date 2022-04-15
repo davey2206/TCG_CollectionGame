@@ -12,7 +12,6 @@ namespace TCG_CollectionGame.Controllers
     public class PackController : Controller
     {
         private CardManager cardManager;
-
         private SetMananger setMananger;
         private UserManager userManager;
 
@@ -90,13 +89,14 @@ namespace TCG_CollectionGame.Controllers
                 {
 
                 }
+            }
 
             return PokeCardsImg;
         }
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setManager.getSets();
+            List<Pokeset> sets = setMananger.getSets();
 
             return sets;
         }
