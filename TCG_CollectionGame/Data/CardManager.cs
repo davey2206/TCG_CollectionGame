@@ -21,7 +21,7 @@ namespace TCG_CollectionGame.Models
             _context.SaveChanges();
         }
 
-        public List<string> getCards(string setCode, int userId)
+        public List<string> GetCards(string setCode, int userId)
         {
             List<string> cardIds = new List<string>();
             var cards = _context.Pokecard.Where(e => e.SetCode == setCode && e.UserId == userId);

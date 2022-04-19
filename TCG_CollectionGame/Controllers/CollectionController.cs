@@ -53,7 +53,7 @@ namespace TCG_CollectionGame.Controllers
             List<string> lCards = new List<string>();
             try
             {
-                List<string> cards = cardManager.getCards(code, int.Parse(TempData.Peek("userID").ToString()));
+                List<string> cards = cardManager.GetCards(code, int.Parse(TempData.Peek("userID").ToString()));
                 foreach (var card in cards)
                 {
                     lCards.Add(card);

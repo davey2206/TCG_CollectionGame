@@ -28,7 +28,7 @@ namespace TCG_CollectionGame.Controllers
             {
                 return RedirectToAction("index", "Login");
             }
-            ViewBag.user = userManager.getUser(TempData.Peek("username").ToString());
+            ViewBag.user = userManager.GetUser(TempData.Peek("username").ToString());
             ViewData["sets"] = getSets();
             return View();
         }
@@ -40,7 +40,7 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction("index", "Login");
             }
 
-            ViewBag.user = userManager.getUser(TempData.Peek("username").ToString());
+            ViewBag.user = userManager.GetUser(TempData.Peek("username").ToString());
             ViewData["cards"] = await getCardsAsync(Code);
             ViewData["sets"] = getSets();
             return View();
@@ -96,19 +96,19 @@ namespace TCG_CollectionGame.Controllers
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setMananger.getSets();
+            List<Pokeset> sets = setMananger.GetSets();
 
             return sets;
         }
 
         public bool cheokCoins()
         {
-            User u = userManager.getUser(TempData.Peek("username").ToString());
+            User u = userManager.GetUser(TempData.Peek("username").ToString());
 
             if (u.Coin !>= 25)
             {
                 u.Coin = u.Coin - 25;
-                userManager.updateUser(u);
+                userManager.UpdateUser(u);
                 return true;
             }
             return false;

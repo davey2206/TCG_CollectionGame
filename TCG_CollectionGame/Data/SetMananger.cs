@@ -15,7 +15,7 @@ namespace TCG_CollectionGame.Models
             _context = context;
         }
 
-        public List<Pokeset> getSets()
+        public List<Pokeset> GetSets()
         {
             List<Pokeset> sets = new List<Pokeset>();
             sets = _context.Pokeset.ToList();

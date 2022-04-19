@@ -15,9 +15,9 @@ namespace TCG_CollectionGame.Models
             _context = context;
         }
 
-        public bool UserExists(string U)
+        public bool UserExists(string user)
         {
-            return _context.User.Any(e => e.Username == U);
+            return _context.User.Any(e => e.Username == user);
         }
 
         public void AddUser(User user)
@@ -26,13 +26,13 @@ namespace TCG_CollectionGame.Models
             _context.SaveChanges();
         }
 
-        public User getUser(string user)
+        public User GetUser(string user)
         {
             User u = _context.User.FirstOrDefault(e => e.Username == user);
             return u;
         }
 
-        public void updateUser(User user)
+        public void UpdateUser(User user)
         {
             _context.Update(user);
             _context.SaveChanges();
