@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 using PokemonTcgSdk;
 using TCG_CollectionGame.Models;
 using TCG_CollectionGame.Data;
+using TCG_CollectionGame.Data.Interfaces;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class CollectionController : Controller
     {
-        private CardManager cardManager;
-        private SetManager setManager;
+        private readonly ICardService _cardService;
+        private readonly ISetService _setService;
 
-        public CollectionController(TCG_CollectionGameContext context)
+        public CollectionController(ICardService cardService, ISetService setService)
         {
-            cardManager = new CardManager(context);
-            setManager = new SetManager(context);
+            _cardService = cardService;
+            _setService = setService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (TempData.Peek("username") == null)
             {
@@ -43,7 +44,7 @@ namespace TCG_CollectionGame.Controllers
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setManager.getSets();
+            List<Pokeset> sets = _setService.GetSets();
 
             return sets;
         }
@@ -53,7 +54,7 @@ namespace TCG_CollectionGame.Controllers
             List<string> lCards = new List<string>();
             try
             {
-                List<string> cards = cardManager.GetCards(code, int.Parse(TempData.Peek("userID").ToString()));
+                List<string> cards = _cardService.GetCards(code, int.Parse(TempData.Peek("userID").ToString()));
                 foreach (var card in cards)
                 {
                     lCards.Add(card);

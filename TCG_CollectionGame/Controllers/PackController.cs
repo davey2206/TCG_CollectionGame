@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using PokemonTcgSdk;
 using TCG_CollectionGame.Models;
 using TCG_CollectionGame.Data;
+using TCG_CollectionGame.Data.Interfaces;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class PackController : Controller
     {
-        private CardManager cardManager;
-        private SetMananger setMananger;
-        private UserManager userManager;
+        private readonly ICardService _cardService;
+        private readonly ISetService _setService;
+        private readonly IUserService _userService;
 
-        public PackController(TCG_CollectionGameContext context)
+        public PackController(ICardService cardService, ISetService setService, IUserService userService)
         {
-            cardManager = new CardManager(context);
-            setMananger = new SetMananger(context);
-            userManager = new UserManager(context);
+            _cardService = cardService;
+            _setService = setService;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -28,7 +29,7 @@ namespace TCG_CollectionGame.Controllers
             {
                 return RedirectToAction("index", "Login");
             }
-            ViewBag.user = userManager.GetUser(TempData.Peek("username").ToString());
+            ViewBag.user = _userService.GetUser(TempData.Peek("username").ToString());
             ViewData["sets"] = getSets();
             return View();
         }
@@ -40,7 +41,7 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction("index", "Login");
             }
 
-            ViewBag.user = userManager.GetUser(TempData.Peek("username").ToString());
+            ViewBag.user = _userService.GetUser(TempData.Peek("username").ToString());
             ViewData["cards"] = await getCardsAsync(Code);
             ViewData["sets"] = getSets();
             return View();
@@ -81,13 +82,16 @@ namespace TCG_CollectionGame.Controllers
 
                         for (int i = 0; i < PokeCardsId.Count; i++)
                         {
-                            cardManager.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, PokeCardsId[i], PokeCardsImg[i]));
+                            _cardService.AddCard(new Pokecard(int.Parse(TempData.Peek("userID").ToString()), code, PokeCardsId[i], PokeCardsImg[i]));
                         }
+
+                        User u = _userService.GetUser(TempData.Peek("username").ToString());
+                        u.Coin = u.Coin - 25;
+                        _userService.UpdateUser(u);
                     }
                 }
                 catch (Exception)
                 {
-
                 }
             }
 
@@ -96,19 +100,17 @@ namespace TCG_CollectionGame.Controllers
 
         public List<Pokeset> getSets()
         {
-            List<Pokeset> sets = setMananger.GetSets();
+            List<Pokeset> sets = _setService.GetSets();
 
             return sets;
         }
 
         public bool cheokCoins()
         {
-            User u = userManager.GetUser(TempData.Peek("username").ToString());
+            User u = _userService.GetUser(TempData.Peek("username").ToString());
 
-            if (u.Coin !>= 25)
+            if (u.Coin! >= 25)
             {
-                u.Coin = u.Coin - 25;
-                userManager.UpdateUser(u);
                 return true;
             }
             return false;

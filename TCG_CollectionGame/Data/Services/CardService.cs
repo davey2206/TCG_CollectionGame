@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TCG_CollectionGame.Data;
+using TCG_CollectionGame.Data.Interfaces;
+using TCG_CollectionGame.Models;
 
-namespace TCG_CollectionGame.Models
+namespace TCG_CollectionGame.Data.Services
 {
-    public class CardManager
+    public class CardService : ICardService
     {
         private readonly TCG_CollectionGameContext _context;
 
-        public CardManager(TCG_CollectionGameContext context)
+        public CardService(TCG_CollectionGameContext context)
         {
             _context = context;
         }

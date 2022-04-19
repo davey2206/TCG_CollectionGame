@@ -9,22 +9,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TCG_CollectionGame.Data;
+using TCG_CollectionGame.Data.Interfaces;
 using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class UsersController : Controller
     {
-        private UserManager userManager;
+        private readonly IUserService _userService;
 
-        public UsersController(TCG_CollectionGameContext context)
+        public UsersController(IUserService userService)
         {
-            userManager = new UserManager(context);
+            _userService = userService;
         }
 
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
         {
-            var u = userManager.GetUser(user.Username);
+            var u = _userService.GetUser(user.Username);
             if (u == null)
             {
                 TempData["ErrorMessage"] = "Username or password is incorrect";
@@ -41,16 +42,15 @@ namespace TCG_CollectionGame.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Username,Password,Coin")] User user)
         {
-            
             if (ModelState.IsValid)
             {
-                if (userManager.UserExists(user.Username))
+                if (_userService.UserExists(user.Username))
                 {
                     TempData["ErrorMessage"] = "This Username is already taken";
                     return RedirectToAction("Register", "Login");
@@ -60,7 +60,7 @@ namespace TCG_CollectionGame.Controllers
                     string hashed = BCrypt.Net.BCrypt.HashPassword(user.Password);
                     user.Password = hashed;
 
-                    userManager.AddUser(user);
+                    _userService.AddUser(user);
                     TempData["ErrorMessage"] = "Successfully created your acount";
                     return RedirectToAction("index", "Login");
                 }
@@ -70,7 +70,7 @@ namespace TCG_CollectionGame.Controllers
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]

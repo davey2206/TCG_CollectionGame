@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using TCG_CollectionGame.Models;
 
-namespace TCG_CollectionGame.Data.Services
+namespace TCG_CollectionGame.Data.Interfaces
 {
     public interface ISetService
     {
-        List<Pokeset> getSets();
+        List<Pokeset> GetSets();
     }
 }

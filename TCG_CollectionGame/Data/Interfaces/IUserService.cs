@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TCG_CollectionGame.Models;
 
-namespace TCG_CollectionGame.Data.Services
+namespace TCG_CollectionGame.Data.Interfaces
 {
     public interface IUserService
     {
@@ -14,6 +14,6 @@ namespace TCG_CollectionGame.Data.Services
 
         void AddUser(User user);
 
-        void UpdataUser(User user);
+        void UpdateUser(User user);
     }
 }
