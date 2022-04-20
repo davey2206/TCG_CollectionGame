@@ -1,4 +1,4 @@
-﻿namespace TCG_CollectionGame.Models
+﻿namespace TCG_CollectionGame.Enities.Models
 {
     public class User
     {

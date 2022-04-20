@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TCG_CollectionGame.Data\TCG_CollectionGame.Data.csproj" />
+    <ProjectReference Include="..\TCG_CollectionGame.entities\TCG_CollectionGame.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PokemonTcgSdk" Version="1.1.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TCG_CollectionGame.Data.Interfaces;
+using TCG_CollectionGame.Business.Interfaces;
+using TCG_CollectionGame.Enities.Models;
 using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly IUserService _userService;
-
-        public UsersController(IUserService userService)
+        private readonly IBusinessUserService _userService;
+        public UsersController(IBusinessUserService userService)
         {
             _userService = userService;
         }
-
         public async Task<IActionResult> Check([Bind("ID,Username,Password,Coin")] User user)
         {
             var u = _userService.GetUser(user.Username);

@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TCG_CollectionGame.Data.Interfaces;
-using TCG_CollectionGame.Models;
+using TCG_CollectionGame.DataContext;
+using TCG_CollectionGame.Enities.Models;
 
 namespace TCG_CollectionGame.Data.Services
 {
-    public class SetService : ISetService
+    public class DataSetService : IDataSetService
     {
         private readonly TCG_CollectionGameContext _context;
 
-        public SetService(TCG_CollectionGameContext context)
+        public DataSetService(TCG_CollectionGameContext context)
         {
             _context = context;
         }

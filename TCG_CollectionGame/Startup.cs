@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TCG_CollectionGame.Data;
+using TCG_CollectionGame.Business.Interfaces;
+using TCG_CollectionGame.Business.Services;
 using TCG_CollectionGame.Data.Interfaces;
 using TCG_CollectionGame.Data.Services;
+using TCG_CollectionGame.DataContext;
 
 namespace TCG_CollectionGame
 {
@@ -24,9 +26,12 @@ namespace TCG_CollectionGame
         {
             services.AddControllersWithViews();
             services.AddDbContext<TCG_CollectionGameContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TCG_CollectionGameContext")));
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ISetService, SetService>();
-            services.AddScoped<ICardService, CardService>();
+            services.AddScoped<IDataUserService, DataUserService>();
+            services.AddScoped<IDataSetService, DataSetService>();
+            services.AddScoped<IDataCardService, DataCardService>();
+            services.AddScoped<IBusinessUserService, BusinessUserService>();
+            services.AddScoped<IBusinessSetService, BusinessSetService>();
+            services.AddScoped<IBusinessCardService, BusinessCardService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

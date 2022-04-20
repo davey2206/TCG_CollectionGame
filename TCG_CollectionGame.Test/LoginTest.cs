@@ -8,7 +8,6 @@ namespace TCG_CollectionGame.Test
         [TestMethod]
         public void IndexTest()
         {
-
         }
     }
 }

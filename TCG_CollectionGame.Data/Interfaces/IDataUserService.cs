@@ -1,8 +1,8 @@
-﻿using TCG_CollectionGame.Models;
+﻿using TCG_CollectionGame.Enities.Models;
 
 namespace TCG_CollectionGame.Data.Interfaces
 {
-    public interface IUserService
+    public interface IDataUserService
     {
         User GetUser(string user);
 

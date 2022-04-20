@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TCG_CollectionGame.Models;
+using TCG_CollectionGame.Enities.Models;
 
 namespace TCG_CollectionGame.Data.Interfaces
 {
-    public interface ICardService
+    public interface IDataCardService
     {
         List<string> GetCards(string setCode, int userId);
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TCG_CollectionGame.Models;
+using TCG_CollectionGame.Enities.Models;
 
-namespace TCG_CollectionGame.Data
+namespace TCG_CollectionGame.DataContext
 {
     public class TCG_CollectionGameContext : DbContext
     {
@@ -10,9 +10,9 @@ namespace TCG_CollectionGame.Data
         {
         }
 
-        public DbSet<TCG_CollectionGame.Models.User> User { get; set; }
-        public DbSet<TCG_CollectionGame.Models.Pokecard> Pokecard { get; set; }
-        public DbSet<TCG_CollectionGame.Models.Pokeset> Pokeset { get; set; }
+        public DbSet<TCG_CollectionGame.Enities.Models.User> User { get; set; }
+        public DbSet<TCG_CollectionGame.Enities.Models.Pokecard> Pokecard { get; set; }
+        public DbSet<TCG_CollectionGame.Enities.Models.Pokeset> Pokeset { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
