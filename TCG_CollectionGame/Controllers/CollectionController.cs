@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PokemonTcgSdk;
-using TCG_CollectionGame.Models;
-using TCG_CollectionGame.Data;
 using TCG_CollectionGame.Data.Interfaces;
+using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers
 {

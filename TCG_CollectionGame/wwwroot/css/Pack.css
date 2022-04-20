@@ -4,12 +4,15 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 #menu_col {
     text-align: -webkit-right;
 }
+
 h1 {
     color: white;
 }
+
 #SelectText {
     margin-top: 10vh;
 }
@@ -24,9 +27,11 @@ h1 {
     font-weight: bolder;
     transition: all 1.5s ease-in-out;
 }
+
     #Coin_container.active {
         transform: rotate3d(1, 3, 1, 1080deg);
     }
+
 #Coin_text {
     pointer-events: none;
     position: absolute;
@@ -85,7 +90,6 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 #card_img {
     width: 28vh;

@@ -37,6 +37,7 @@ div.content {
         font-weight: bold;
         background-color: #232323;
     }
+
     #btn_login:active {
         color: #f70000;
         font-weight: bolder;
@@ -51,11 +52,13 @@ div.content {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
-#login_input::placeholder {
-    color: #cccccc;
-    font-weight: bold;
-}
-#msg{
+
+    #login_input::placeholder {
+        color: #cccccc;
+        font-weight: bold;
+    }
+
+#msg {
     -webkit-text-stroke-width: medium;
     -webkit-text-stroke-color: black;
     font-weight: 900;

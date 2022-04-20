@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TCG_CollectionGame.Controllers
 {
@@ -14,6 +10,7 @@ namespace TCG_CollectionGame.Controllers
             ViewData["Msg"] = errMsg;
             return View();
         }
+
         public IActionResult Register()
         {
             var errMsg = TempData["ErrorMessage"] as string;

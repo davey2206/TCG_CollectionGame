@@ -1,5 +1,3 @@
-using System;
-
 namespace TCG_CollectionGame.Models
 {
     public class ErrorViewModel
