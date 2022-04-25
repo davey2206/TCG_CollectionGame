@@ -10,9 +10,14 @@ namespace TCG_CollectionGame.DataContext
         {
         }
 
-        public DbSet<TCG_CollectionGame.Enities.Models.User> User { get; set; }
-        public DbSet<TCG_CollectionGame.Enities.Models.Pokecard> Pokecard { get; set; }
-        public DbSet<TCG_CollectionGame.Enities.Models.Pokeset> Pokeset { get; set; }
+        public TCG_CollectionGameContext()
+        {
+
+        }
+
+        public virtual DbSet<TCG_CollectionGame.Enities.Models.User> User { get; set; }
+        public virtual DbSet<TCG_CollectionGame.Enities.Models.Pokecard> Pokecard { get; set; }
+        public virtual DbSet<TCG_CollectionGame.Enities.Models.Pokeset> Pokeset { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
