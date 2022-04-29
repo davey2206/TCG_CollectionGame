@@ -72,12 +72,3 @@ body {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
-
-.transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-}
-
-html.is-animating .transition-fade {
-    opacity: 0;
-}

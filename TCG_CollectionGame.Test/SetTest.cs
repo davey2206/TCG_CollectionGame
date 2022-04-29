@@ -13,10 +13,8 @@ namespace TCG_CollectionGame.Test
     [TestClass]
     public class SetTest
     {
-        [TestMethod]
-        public void GetAllSetsTest()
+        public Mock<TCG_CollectionGameContext> MockData()
         {
-            //Arrange
             var data = new List<Pokeset>
             {
                 new Pokeset {SetName="testSet1", SetCode="testCode1"},
@@ -33,6 +31,15 @@ namespace TCG_CollectionGame.Test
 
             var mockContext = new Mock<TCG_CollectionGameContext>();
             mockContext.Setup(c => c.Pokeset).Returns(mockset.Object);
+
+            return mockContext;
+        }
+
+        [TestMethod]
+        public void GetAllSetsTest()
+        {
+            //Arrange
+            var mockContext = MockData();
 
             //Act
             var DataService = new DataSetService(mockContext.Object);

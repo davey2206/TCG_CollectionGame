@@ -19,19 +19,7 @@ namespace TCG_CollectionGame.Business.Services
 
         public List<string> GetAllCards(int id, string code)
         {
-            List<string> lCards = new List<string>();
-            try
-            {
-                List<string> cards = _cardService.GetCards(code, id);
-                foreach (var card in cards)
-                {
-                    lCards.Add(card);
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return lCards;
+            return _cardService.GetCards(code, id);
         }
         public List<string> AddCards(int userId, string code)
         {

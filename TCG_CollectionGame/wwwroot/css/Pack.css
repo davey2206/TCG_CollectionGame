@@ -99,12 +99,3 @@ h1 {
     #card_img:hover {
         width: 35vh;
     }
-
-.transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-}
-
-html.is-animating .transition-fade {
-    opacity: 0;
-}

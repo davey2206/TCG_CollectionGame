@@ -9,6 +9,7 @@
             this.CardCode = cardCode;
             this.CardImg = cardImg;
         }
+        public Pokecard() { }
 
         public int ID { get; set; }
         public int UserId { get; set; }
