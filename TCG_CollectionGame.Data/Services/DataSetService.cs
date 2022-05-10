@@ -17,8 +17,7 @@ namespace TCG_CollectionGame.Data.Services
 
         public List<Pokeset> GetSets()
         {
-            List<Pokeset> sets = new List<Pokeset>();
-            sets = _context.Pokeset.ToList();
+            List<Pokeset> sets = _context.Pokeset.ToList();
 
             return sets;
         }
