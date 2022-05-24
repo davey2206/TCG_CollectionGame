@@ -29,7 +29,7 @@ namespace TCG_CollectionGame.Data.Services
         public User GetUser(string user)
         {
             User u = _context.User.FirstOrDefault(e => e.Username == user);
-            u.Cards = _context.Pokecard.Where(c => c.UserId == u.ID).ToList();
+            u.Cards = _context.Pokecard.Where(c => c.User.ID == u.ID).ToList();
             return u;
         }
 

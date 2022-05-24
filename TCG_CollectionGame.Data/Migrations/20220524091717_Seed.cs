@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TCG_CollectionGame.Migrations
+namespace TCG_CollectionGame.Data.Migrations
 {
     public partial class Seed : Migration
     {

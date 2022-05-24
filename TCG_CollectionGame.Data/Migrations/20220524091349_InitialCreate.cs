@@ -1,27 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TCG_CollectionGame.Migrations
+namespace TCG_CollectionGame.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Pokecard",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(nullable: false),
-                    SetCode = table.Column<string>(nullable: true),
-                    CardCode = table.Column<string>(nullable: true),
-                    CardImg = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pokecard", x => x.ID);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Pokeset",
                 columns: table => new
@@ -50,6 +34,33 @@ namespace TCG_CollectionGame.Migrations
                 {
                     table.PrimaryKey("PK_User", x => x.ID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Pokecard",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SetCode = table.Column<string>(nullable: true),
+                    CardCode = table.Column<string>(nullable: true),
+                    CardImg = table.Column<string>(nullable: true),
+                    UserID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pokecard", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Pokecard_User_UserID",
+                        column: x => x.UserID,
+                        principalTable: "User",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pokecard_UserID",
+                table: "Pokecard",
+                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

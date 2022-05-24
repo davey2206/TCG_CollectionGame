@@ -8,6 +8,6 @@ namespace TCG_CollectionGame.Enities.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public int Coin { get; set; }
-        public List<Pokecard> Cards { get; set; }
+        public ICollection<Pokecard> Cards { get; set; }
     }
 }

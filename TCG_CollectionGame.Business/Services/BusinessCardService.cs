@@ -54,7 +54,7 @@ namespace TCG_CollectionGame.Business.Services
 
                     for (int i = 0; i < PokeCardsId.Count; i++)
                     {
-                        _cardService.AddCard(new Pokecard(user.ID, code, PokeCardsId[i], PokeCardsImg[i]));
+                        _cardService.AddCard(new Pokecard(user, code, PokeCardsId[i], PokeCardsImg[i]));
                     }
                 }
             }
