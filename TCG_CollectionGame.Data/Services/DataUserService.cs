@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TCG_CollectionGame.Data.Interfaces;
 using TCG_CollectionGame.DataContext;
 using TCG_CollectionGame.Enities.Models;
@@ -28,6 +29,7 @@ namespace TCG_CollectionGame.Data.Services
         public User GetUser(string user)
         {
             User u = _context.User.FirstOrDefault(e => e.Username == user);
+            u.Cards = _context.Pokecard.Where(c => c.UserId == u.ID).ToList();
             return u;
         }
 

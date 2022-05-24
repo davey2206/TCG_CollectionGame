@@ -39,10 +39,10 @@ namespace TCG_CollectionGame.Controllers
             }
 
             List<string> cards = new List<string>();
-
+            User user = _userService.GetUser(TempData.Peek("username").ToString());
             if (_userService.CheckCoins(TempData.Peek("username").ToString()))
             {
-                cards = _cardService.AddCards(int.Parse(TempData.Peek("userID").ToString()), Code);
+                cards = _cardService.AddCards(user, Code);
                 if (cards.Count != 0)
                 {
                     User u = _userService.GetUser(TempData.Peek("username").ToString());
@@ -51,7 +51,7 @@ namespace TCG_CollectionGame.Controllers
                 }
             }
 
-            ViewBag.user = _userService.GetUser(TempData.Peek("username").ToString());
+            ViewBag.user = user;
             ViewData["cards"] = cards;
             ViewData["sets"] = _setService.GetAllSets();
             return View();

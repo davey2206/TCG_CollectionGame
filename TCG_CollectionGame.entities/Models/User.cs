@@ -1,4 +1,6 @@
-﻿namespace TCG_CollectionGame.Enities.Models
+﻿using System.Collections.Generic;
+
+namespace TCG_CollectionGame.Enities.Models
 {
     public class User
     {
@@ -6,5 +8,6 @@
         public string Username { get; set; }
         public string Password { get; set; }
         public int Coin { get; set; }
+        public List<Pokecard> Cards { get; set; }
     }
 }

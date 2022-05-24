@@ -1,4 +1,6 @@
-﻿namespace TCG_CollectionGame.Enities.Models
+﻿using System.Collections.Generic;
+
+namespace TCG_CollectionGame.Enities.Models
 {
     public class Pokeset
     {

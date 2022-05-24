@@ -5,7 +5,7 @@ namespace TCG_CollectionGame.Data.Interfaces
 {
     public interface IDataCardService
     {
-        List<string> GetCards(string setCode, int userId);
+        List<string> GetCards(string setCode, User user);
 
         void AddCard(Pokecard pokecard);
     }

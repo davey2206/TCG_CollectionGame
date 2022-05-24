@@ -17,11 +17,11 @@ namespace TCG_CollectionGame.Business.Services
             _cardService = cardService;
         }
 
-        public List<string> GetAllCards(int id, string code)
+        public List<string> GetAllCards(User user, string code)
         {
-            return _cardService.GetCards(code, id);
+            return _cardService.GetCards(code, user);
         }
-        public List<string> AddCards(int userId, string code)
+        public List<string> AddCards(User user, string code)
         {
             List<string> AllPokeCards = new List<string>();
             List<string> AllPokeCardsImg = new List<string>();
@@ -33,9 +33,9 @@ namespace TCG_CollectionGame.Business.Services
                 Random rng = new Random();
 
                 Dictionary<string, string> query = new Dictionary<string, string>()
-                    {
-                        { "setCode", code }
-                    };
+                 {
+                    { "setCode", code }
+                 };
                 var cards = Card.Get(query);
                 if (cards.Cards != null)
                 {
@@ -54,7 +54,7 @@ namespace TCG_CollectionGame.Business.Services
 
                     for (int i = 0; i < PokeCardsId.Count; i++)
                     {
-                        _cardService.AddCard(new Pokecard(userId, code, PokeCardsId[i], PokeCardsImg[i]));
+                        _cardService.AddCard(new Pokecard(user.ID, code, PokeCardsId[i], PokeCardsImg[i]));
                     }
                 }
             }

@@ -23,7 +23,6 @@ namespace TCG_CollectionGame.Controllers
             }
             else if (BCrypt.Net.BCrypt.Verify(user.Password, u.Password))
             {
-                TempData["userID"] = u.ID;
                 TempData["username"] = u.Username;
                 return RedirectToAction("index", "Home");
             }

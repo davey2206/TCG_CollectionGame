@@ -21,10 +21,10 @@ namespace TCG_CollectionGame.Data.Services
             _context.SaveChanges();
         }
 
-        public List<string> GetCards(string setCode, int userId)
+        public List<string> GetCards(string setCode, User user)
         {
             List<string> cardIds = new List<string>();
-            var cards = _context.Pokecard.Where(e => e.SetCode == setCode && e.UserId == userId);
+            var cards = user.Cards.Where(e => e.SetCode == setCode);
             foreach (var card in cards)
             {
                 cardIds.Add(card.CardImg);

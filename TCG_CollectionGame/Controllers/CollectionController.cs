@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TCG_CollectionGame.Business.Interfaces;
+using TCG_CollectionGame.Enities.Models;
 using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers
@@ -10,10 +11,12 @@ namespace TCG_CollectionGame.Controllers
     {
         private readonly IBusinessSetService _setService;
         private readonly IBusinessCardService _cardService;
-        public CollectionController(IBusinessSetService setService, IBusinessCardService cardService)
+        private readonly IBusinessUserService _userService;
+        public CollectionController(IBusinessSetService setService, IBusinessCardService cardService, IBusinessUserService userService)
         {
             _setService = setService;
             _cardService = cardService;
+            _userService = userService;
         }
         public IActionResult Index()
         {
@@ -32,7 +35,7 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction("index", "Login");
             }
             ViewData["sets"] = _setService.GetAllSets();
-            ViewData["cards"] = _cardService.GetAllCards(int.Parse(TempData.Peek("userID").ToString()), Code);
+            ViewData["cards"] = _cardService.GetAllCards(_userService.GetUser(TempData.Peek("username").ToString()), Code);
             return View();
         }
     }
