@@ -21,5 +21,12 @@ namespace TCG_CollectionGame.Data.Services
 
             return sets;
         }
+
+        public Pokeset GetSet(string code)
+        {
+            Pokeset set = _context.Pokeset.Where(p => p.SetCode == code).FirstOrDefault();
+
+            return set;
+        }
     }
 }

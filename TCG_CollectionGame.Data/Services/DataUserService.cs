@@ -26,9 +26,9 @@ namespace TCG_CollectionGame.Data.Services
             _context.SaveChanges();
         }
 
-        public User GetUser(string user)
+        public User GetUser(string username)
         {
-            User u = _context.User.FirstOrDefault(e => e.Username == user);
+            User u = _context.User.FirstOrDefault(e => e.Username == username);
             u.Cards = _context.Pokecard.Where(c => c.User.ID == u.ID).ToList();
             return u;
         }

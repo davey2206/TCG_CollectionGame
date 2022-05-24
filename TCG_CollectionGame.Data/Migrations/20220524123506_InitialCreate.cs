@@ -41,14 +41,20 @@ namespace TCG_CollectionGame.Data.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SetCode = table.Column<string>(nullable: true),
                     CardCode = table.Column<string>(nullable: true),
                     CardImg = table.Column<string>(nullable: true),
-                    UserID = table.Column<int>(nullable: true)
+                    UserID = table.Column<int>(nullable: true),
+                    PokesetID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pokecard", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Pokecard_Pokeset_PokesetID",
+                        column: x => x.PokesetID,
+                        principalTable: "Pokeset",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Pokecard_User_UserID",
                         column: x => x.UserID,
@@ -56,6 +62,11 @@ namespace TCG_CollectionGame.Data.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pokecard_PokesetID",
+                table: "Pokecard",
+                column: "PokesetID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pokecard_UserID",

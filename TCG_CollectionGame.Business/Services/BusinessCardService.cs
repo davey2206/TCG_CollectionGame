@@ -12,9 +12,11 @@ namespace TCG_CollectionGame.Business.Services
     public class BusinessCardService : IBusinessCardService
     {
         private readonly IDataCardService _cardService;
-        public BusinessCardService(IDataCardService cardService)
+        private readonly IDataSetService _setService;
+        public BusinessCardService(IDataCardService cardService, IDataSetService setService)
         {
             _cardService = cardService;
+            _setService = setService;
         }
 
         public List<string> GetAllCards(User user, string code)
@@ -54,7 +56,7 @@ namespace TCG_CollectionGame.Business.Services
 
                     for (int i = 0; i < PokeCardsId.Count; i++)
                     {
-                        _cardService.AddCard(new Pokecard(user, code, PokeCardsId[i], PokeCardsImg[i]));
+                        _cardService.AddCard(new Pokecard(user, _setService.GetSet(code), PokeCardsId[i], PokeCardsImg[i]));
                     }
                 }
             }

@@ -28,14 +28,14 @@ namespace TCG_CollectionGame.Controllers
             return View();
         }
 
-        public IActionResult Collection(string Code)
+        public IActionResult Collection(string code)
         {
             if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }
             ViewData["sets"] = _setService.GetAllSets();
-            ViewData["cards"] = _cardService.GetAllCards(_userService.GetUser(TempData.Peek("username").ToString()), Code);
+            ViewData["cards"] = _cardService.GetAllCards(_userService.GetUser(TempData.Peek("username").ToString()), code);
             return View();
         }
     }

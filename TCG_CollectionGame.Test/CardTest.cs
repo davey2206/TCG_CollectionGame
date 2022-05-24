@@ -41,7 +41,7 @@ namespace TCG_CollectionGame.Test
 
             //Act
             var DataService = new DataCardService(mockContext.Object);
-            var service = new BusinessCardService(DataService);
+            //var service = new BusinessCardService(DataService);
             //var cards = service.GetAllCards(1, "swsh3");
 
             //Assert

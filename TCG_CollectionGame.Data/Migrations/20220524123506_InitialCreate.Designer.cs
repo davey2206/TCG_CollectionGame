@@ -10,7 +10,7 @@ using TCG_CollectionGame.DataContext;
 namespace TCG_CollectionGame.Data.Migrations
 {
     [DbContext(typeof(TCG_CollectionGameContext))]
-    [Migration("20220524091349_InitialCreate")]
+    [Migration("20220524123506_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,13 +34,15 @@ namespace TCG_CollectionGame.Data.Migrations
                     b.Property<string>("CardImg")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SetCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("PokesetID")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("PokesetID");
 
                     b.HasIndex("UserID");
 
@@ -88,6 +90,10 @@ namespace TCG_CollectionGame.Data.Migrations
 
             modelBuilder.Entity("TCG_CollectionGame.Enities.Models.Pokecard", b =>
                 {
+                    b.HasOne("TCG_CollectionGame.Enities.Models.Pokeset", "Pokeset")
+                        .WithMany("Cards")
+                        .HasForeignKey("PokesetID");
+
                     b.HasOne("TCG_CollectionGame.Enities.Models.User", "User")
                         .WithMany("Cards")
                         .HasForeignKey("UserID");

@@ -31,7 +31,7 @@ namespace TCG_CollectionGame.Controllers
             return View();
         }
 
-        public IActionResult Open(string Code)
+        public IActionResult Open(string code)
         {
             if (TempData.Peek("username") == null)
             {
@@ -42,7 +42,7 @@ namespace TCG_CollectionGame.Controllers
             User user = _userService.GetUser(TempData.Peek("username").ToString());
             if (_userService.CheckCoins(TempData.Peek("username").ToString()))
             {
-                cards = _cardService.AddCards(user, Code);
+                cards = _cardService.AddCards(user, code);
                 if (cards.Count != 0)
                 {
                     User u = _userService.GetUser(TempData.Peek("username").ToString());

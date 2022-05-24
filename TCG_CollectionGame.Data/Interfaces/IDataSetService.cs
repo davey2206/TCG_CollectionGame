@@ -6,5 +6,6 @@ namespace TCG_CollectionGame.Data.Interfaces
     public interface IDataSetService
     {
         List<Pokeset> GetSets();
+        Pokeset GetSet(string code);
     }
 }
