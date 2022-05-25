@@ -17,8 +17,8 @@ namespace TCG_CollectionGame.Test
         {
             var data = new List<Pokecard>
             {
-                //new Pokecard {UserId=1, SetCode="swsh3", CardCode="swsh3-3", CardImg="https://images.pokemontcg.io/swsh3/3.png"},
-                //new Pokecard {UserId=2, SetCode="swsh3", CardCode="swsh3-26", CardImg="https://images.pokemontcg.io/swsh3/26.png"},
+                new Pokecard {User= new User{ ID=1 }, Pokeset=new Pokeset{ ID=1, SetCode="swsh3" }, CardCode="swsh3-3", CardImg="https://images.pokemontcg.io/swsh3/3.png"},
+                new Pokecard {User= new User{ ID=2 }, Pokeset=new Pokeset{ ID=1, SetCode="swsh3" }, CardCode="swsh3-26", CardImg="https://images.pokemontcg.io/swsh3/26.png"},
             }.AsQueryable();
 
             var mockset = new Mock<DbSet<Pokecard>>();
@@ -37,16 +37,22 @@ namespace TCG_CollectionGame.Test
         public void GetAllCardsTest()
         {
             //Arrange
+            var data = new List<User>
+            {
+                new User { ID = 1, Cards=new List<Pokecard> { new Pokecard{ User = new User { ID = 1 }, Pokeset = new Pokeset { ID = 1, SetCode = "swsh3" }, CardCode = "swsh3-3", CardImg = "https://images.pokemontcg.io/swsh3/3.png" } } },
+                new User { ID = 2, Cards = new List<Pokecard> { new Pokecard { User = new User { ID = 1 }, Pokeset = new Pokeset { ID = 1, SetCode = "swsh3" }, CardCode = "swsh3-3", CardImg = "https://images.pokemontcg.io/swsh3/3.png" } } }
+            };
             var mockContext = MockData();
 
             //Act
             var DataService = new DataCardService(mockContext.Object);
-            //var service = new BusinessCardService(DataService);
-            //var cards = service.GetAllCards(1, "swsh3");
+            var DataSetService = new DataSetService(mockContext.Object);
+            var service = new BusinessCardService(DataService, DataSetService);
+            var cards = service.GetAllCards(data.Find(u => u.ID == 1), "swsh3");
 
-            //Assert
-            //Assert.AreEqual(1, cards.Count);
-            //Assert.AreEqual("https://images.pokemontcg.io/swsh3/3.png", cards[0]);
+            //assert
+            Assert.AreEqual(1, cards.Count);
+            Assert.AreEqual("https://images.pokemontcg.io/swsh3/3.png", cards[0]);
         }
     }
 }
