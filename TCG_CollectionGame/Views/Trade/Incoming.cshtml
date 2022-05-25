@@ -1,12 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Trade";
+    ViewData["Title"] = "Incoming Trade";
 }
 @section css {
     <link href="@Url.Content("~/css/Trade.css")" rel="stylesheet" />
 }
 <div class="row">
     <div class="col-10">
-        
+
     </div>
     <div class="col-1">
         <div id="button_container">
@@ -16,10 +16,10 @@
             <div id="button_text">back</div>
         </div>
         <div class="mt-5" id="button_container">
-            <a asp-controller="Trade" asp-action="incoming">
+            <a asp-controller="Trade" asp-action="index">
                 <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
             </a>
-            <div id="button_text">Incoming Trade</div>
+            <div id="button_text">Trade</div>
         </div>
     </div>
 </div>

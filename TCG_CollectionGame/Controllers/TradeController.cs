@@ -12,5 +12,10 @@ namespace TCG_CollectionGame.Controllers
         {
             return View();
         }
+
+        public IActionResult Incoming()
+        {
+            return View();
+        }
     }
 }
