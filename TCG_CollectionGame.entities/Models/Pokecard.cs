@@ -1,4 +1,4 @@
-﻿namespace TCG_CollectionGame.Enities.Models
+﻿namespace TCG_CollectionGame.Entities.Models
 {
     public class Pokecard
     {

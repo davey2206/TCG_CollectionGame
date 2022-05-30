@@ -29,6 +29,8 @@ namespace TCG_CollectionGame
             services.AddScoped<IDataUserService, DataUserService>();
             services.AddScoped<IDataSetService, DataSetService>();
             services.AddScoped<IDataCardService, DataCardService>();
+            services.AddScoped<IDataTradeService, DataTradeService>();
+            services.AddScoped<IBusinessTradeService, BusinessTradeService>();
             services.AddScoped<IBusinessUserService, BusinessUserService>();
             services.AddScoped<IBusinessSetService, BusinessSetService>();
             services.AddScoped<IBusinessCardService, BusinessCardService>();

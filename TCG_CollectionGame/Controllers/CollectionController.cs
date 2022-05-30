@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using TCG_CollectionGame.Business.Interfaces;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers
@@ -35,7 +35,7 @@ namespace TCG_CollectionGame.Controllers
                 return RedirectToAction("index", "Login");
             }
             ViewData["sets"] = _setService.GetAllSets();
-            ViewData["cards"] = _cardService.GetAllCards(_userService.GetUser(TempData.Peek("username").ToString()), code);
+            ViewData["cards"] = _cardService.GetCards(_userService.GetUser(TempData.Peek("username").ToString()), code);
             return View();
         }
     }

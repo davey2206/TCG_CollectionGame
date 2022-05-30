@@ -24,7 +24,7 @@
         <h1 id="SelectText">Sets</h1>
         <select id="mySelect">
             <option disabled selected>-- select an option --</option>
-            @foreach (var set in ViewData["sets"] as List<TCG_CollectionGame.Enities.Models.Pokeset>)
+            @foreach (var set in ViewData["sets"] as List<TCG_CollectionGame.Entities.Models.Pokeset>)
             {
                 <option value="/Pack/Open/3?Code=@set.SetCode.ToString()">
                     @set.SetName.ToString()

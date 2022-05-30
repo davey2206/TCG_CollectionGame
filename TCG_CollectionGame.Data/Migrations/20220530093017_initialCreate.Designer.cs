@@ -10,8 +10,8 @@ using TCG_CollectionGame.DataContext;
 namespace TCG_CollectionGame.Data.Migrations
 {
     [DbContext(typeof(TCG_CollectionGameContext))]
-    [Migration("20220524123506_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220530093017_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace TCG_CollectionGame.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TCG_CollectionGame.Enities.Models.Pokecard", b =>
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.Pokecard", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace TCG_CollectionGame.Data.Migrations
                     b.ToTable("Pokecard");
                 });
 
-            modelBuilder.Entity("TCG_CollectionGame.Enities.Models.Pokeset", b =>
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.Pokeset", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,39 @@ namespace TCG_CollectionGame.Data.Migrations
                     b.ToTable("Pokeset");
                 });
 
-            modelBuilder.Entity("TCG_CollectionGame.Enities.Models.User", b =>
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.Trade", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Card1ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Card2ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("User1ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("User2ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Card1ID");
+
+                    b.HasIndex("Card2ID");
+
+                    b.HasIndex("User1ID");
+
+                    b.HasIndex("User2ID");
+
+                    b.ToTable("Trade");
+                });
+
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.User", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -88,15 +120,34 @@ namespace TCG_CollectionGame.Data.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("TCG_CollectionGame.Enities.Models.Pokecard", b =>
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.Pokecard", b =>
                 {
-                    b.HasOne("TCG_CollectionGame.Enities.Models.Pokeset", "Pokeset")
+                    b.HasOne("TCG_CollectionGame.Entities.Models.Pokeset", "Pokeset")
                         .WithMany("Cards")
                         .HasForeignKey("PokesetID");
 
-                    b.HasOne("TCG_CollectionGame.Enities.Models.User", "User")
+                    b.HasOne("TCG_CollectionGame.Entities.Models.User", "User")
                         .WithMany("Cards")
                         .HasForeignKey("UserID");
+                });
+
+            modelBuilder.Entity("TCG_CollectionGame.Entities.Models.Trade", b =>
+                {
+                    b.HasOne("TCG_CollectionGame.Entities.Models.Pokecard", "Card1")
+                        .WithMany()
+                        .HasForeignKey("Card1ID");
+
+                    b.HasOne("TCG_CollectionGame.Entities.Models.Pokecard", "Card2")
+                        .WithMany()
+                        .HasForeignKey("Card2ID");
+
+                    b.HasOne("TCG_CollectionGame.Entities.Models.User", "User1")
+                        .WithMany()
+                        .HasForeignKey("User1ID");
+
+                    b.HasOne("TCG_CollectionGame.Entities.Models.User", "User2")
+                        .WithMany()
+                        .HasForeignKey("User2ID");
                 });
 #pragma warning restore 612, 618
         }

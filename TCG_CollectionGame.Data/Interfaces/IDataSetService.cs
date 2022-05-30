@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Data.Interfaces
 {

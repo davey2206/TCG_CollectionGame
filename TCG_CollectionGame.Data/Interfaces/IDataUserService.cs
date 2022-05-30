@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Data.Interfaces
 {
@@ -12,5 +12,7 @@ namespace TCG_CollectionGame.Data.Interfaces
         void AddUser(User user);
 
         void UpdateUser(User user);
+        List<User> GetAllUsers(string username);
+        void load();
     }
 }

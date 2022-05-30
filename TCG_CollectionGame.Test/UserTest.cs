@@ -6,7 +6,7 @@ using System.Linq;
 using TCG_CollectionGame.Business.Services;
 using TCG_CollectionGame.Data.Services;
 using TCG_CollectionGame.DataContext;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Test
 {

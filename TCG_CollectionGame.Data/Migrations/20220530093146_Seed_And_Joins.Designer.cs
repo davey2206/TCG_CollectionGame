@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCG_CollectionGame.DataContext;
 
 namespace TCG_CollectionGame.Data.Migrations
 {
     [DbContext(typeof(TCG_CollectionGameContext))]
-    partial class TCG_CollectionGameContextModelSnapshot : ModelSnapshot
+    [Migration("20220530093146_Seed_And_Joins")]
+    partial class Seed_And_Joins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

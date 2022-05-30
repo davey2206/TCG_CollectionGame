@@ -21,7 +21,7 @@
         <h1 class="mt-5">Collection</h1>
         <select id="mySelect" onchange="myfunction()">
             <option disabled selected> -- select an option -- </option>
-            @foreach (var set in ViewData["sets"] as List<TCG_CollectionGame.Enities.Models.Pokeset>)
+            @foreach (var set in ViewData["sets"] as List<TCG_CollectionGame.Entities.Models.Pokeset>)
             {
                 <option value="/Collection/Collection/3?Code=@set.SetCode.ToString()">
                     @set.SetName.ToString()

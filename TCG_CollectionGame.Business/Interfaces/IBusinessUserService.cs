@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Business.Interfaces
 {
@@ -12,5 +12,6 @@ namespace TCG_CollectionGame.Business.Interfaces
         public bool UserExists(string username);
         public void AddUser(User user);
         public bool CheckCoins(string username);
+        public List<User> GetAllUsers(string username);
     }
 }

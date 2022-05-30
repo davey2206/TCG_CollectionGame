@@ -2,7 +2,7 @@
 using System.Linq;
 using TCG_CollectionGame.Data.Interfaces;
 using TCG_CollectionGame.DataContext;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Data.Services
 {

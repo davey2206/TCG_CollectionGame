@@ -6,7 +6,31 @@
 }
 <div class="row">
     <div class="col-10">
-
+        @foreach (var trade in ViewData["trades"] as List<TCG_CollectionGame.Entities.Models.Trade>)
+        {
+            <div class="row">
+                <div class="col">
+                    <img id="card_img" src="@trade.Card2.CardImg.ToString()" />
+                </div>
+                <div class="col">
+                    <img id="card_img" src="@trade.Card1.CardImg.ToString()" />
+                </div>
+                <div class="col">
+                    <div id="button_container">
+                        <a asp-controller="Home" asp-action="index">
+                            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+                        </a>
+                        <div id="button_text">Accept</div>
+                    </div>
+                    <div id="button_container">
+                        <a asp-controller="Home" asp-action="index">
+                            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+                        </a>
+                        <div id="button_text">Reject</div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
     <div class="col-1">
         <div id="button_container">

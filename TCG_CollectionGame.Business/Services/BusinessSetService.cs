@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TCG_CollectionGame.Business.Interfaces;
 using TCG_CollectionGame.Data.Interfaces;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Business.Services
 {

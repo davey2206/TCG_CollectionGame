@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TCG_CollectionGame.Business.Interfaces;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 using TCG_CollectionGame.Models;
 
 namespace TCG_CollectionGame.Controllers

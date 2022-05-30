@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Trade";
+}
+@section css {
+    <link href="@Url.Content("~/css/Trade.css")" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-10" style="height: 80vh;">
+        <form asp-action="Trade" asp-controller="Trade">
+            <div class="row">
+                <div class="col-8">
+                    <div class="row" style="overflow: auto; height: 40vh;">
+                        @foreach (var card in ViewData["cards"] as List<TCG_CollectionGame.Entities.Models.Pokecard>)
+                        {
+                            <label>
+                                <input type="radio" name="Card1" value="@card.ID" checked>
+                                <img id="card_img" src="@card.CardImg.ToString()" style="margin: 15px;" />
+                            </label>
+                        }
+                    </div>
+                    <div class="row mt-5" style="overflow: auto; height: 40vh;">
+                        @foreach (var card in ViewData["cards2"] as List<TCG_CollectionGame.Entities.Models.Pokecard>)
+                        {
+                            <label>
+                                <input type="radio" name="Card2" value="@card.ID" checked>
+                                <img id="card_img" src="@card.CardImg.ToString()" style="margin: 15px;" />
+                            </label>
+                        }
+                    </div>
+                    <input hidden name="Username" value="@ViewData["user"].ToString()" />
+                </div>
+                <div class="col">
+                    <div>
+                        <select id="mySelect" onchange="myfunction()">
+                            <option disabled selected> -- select an option -- </option>s
+                            @foreach (var user in ViewData["users"] as List<TCG_CollectionGame.Entities.Models.User>)
+                            {
+                                <option value="/Trade/Trade/3?username=@user.Username.ToString()">
+                                    @user.Username.ToString()
+                                </option>
+                            }
+                        </select>
+                        <div id="button_container" class="mt-5">
+                            <input type="image" alt="Submit" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'/">
+                            <div id="button_text">Trade</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-1">
+        <div id="button_container">
+            <a asp-controller="Home" asp-action="index">
+                <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+            </a>
+            <div id="button_text">back</div>
+        </div>
+        <div class="mt-5" id="button_container">
+            <a asp-controller="Trade" asp-action="incoming">
+                <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
+            </a>
+            <div id="button_text">Incoming Trade</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myfunction() {
+        var e = document.getElementById("mySelect")
+        window.location = e.options[e.selectedIndex].value;
+    }
+</script>

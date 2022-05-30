@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.DataContext
 {
@@ -15,10 +15,10 @@ namespace TCG_CollectionGame.DataContext
 
         }
 
-        public virtual DbSet<TCG_CollectionGame.Enities.Models.User> User { get; set; }
-        public virtual DbSet<TCG_CollectionGame.Enities.Models.Pokecard> Pokecard { get; set; }
-        public virtual DbSet<TCG_CollectionGame.Enities.Models.Pokeset> Pokeset { get; set; }
-
+        public virtual DbSet<TCG_CollectionGame.Entities.Models.User> User { get; set; }
+        public virtual DbSet<TCG_CollectionGame.Entities.Models.Pokecard> Pokecard { get; set; }
+        public virtual DbSet<TCG_CollectionGame.Entities.Models.Pokeset> Pokeset { get; set; }
+        public virtual DbSet<TCG_CollectionGame.Entities.Models.Trade> Trade { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pokecard>().HasOne(p => p.User).WithMany(c => c.Cards);

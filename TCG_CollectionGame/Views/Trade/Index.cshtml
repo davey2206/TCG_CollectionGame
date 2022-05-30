@@ -5,8 +5,33 @@
     <link href="@Url.Content("~/css/Trade.css")" rel="stylesheet" />
 }
 <div class="row">
-    <div class="col-10">
-        
+    <div class="col-10" style="overflow: auto; height: 80vh;">
+        <div class="row">
+            <div class="col-8">
+                <div class="row" style="overflow: auto; height: 40vh;">
+                    @foreach (var card in ViewData["cards"] as List<TCG_CollectionGame.Entities.Models.Pokecard>)
+                    {
+                        <img id="card_img" src="@card.CardImg.ToString()" style="margin: 15px;" />
+                    }
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <select id="mySelect" onchange="myfunction()">
+                        <option disabled selected> -- select an option -- </option>s
+                        @foreach (var user in ViewData["users"] as List<TCG_CollectionGame.Entities.Models.User>)
+                        {
+                            <option value="/Trade/Trade/3?username=@user.Username.ToString()">
+                                @user.Username.ToString()
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-1">
         <div id="button_container">
@@ -23,3 +48,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    function myfunction() {
+        var e = document.getElementById("mySelect")
+        window.location = e.options[e.selectedIndex].value;
+    }
+</script>

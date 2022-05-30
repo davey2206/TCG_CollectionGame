@@ -2,7 +2,7 @@
 
 namespace TCG_CollectionGame.Data.Migrations
 {
-    public partial class Joins_And_Seed : Migration
+    public partial class Seed_And_Joins : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

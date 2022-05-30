@@ -6,7 +6,7 @@ using System.Linq;
 using TCG_CollectionGame.Business.Services;
 using TCG_CollectionGame.Data.Services;
 using TCG_CollectionGame.DataContext;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Test
 {
@@ -48,7 +48,7 @@ namespace TCG_CollectionGame.Test
             var DataService = new DataCardService(mockContext.Object);
             var DataSetService = new DataSetService(mockContext.Object);
             var service = new BusinessCardService(DataService, DataSetService);
-            var cards = service.GetAllCards(data.Find(u => u.ID == 1), "swsh3");
+            var cards = service.GetCards(data.Find(u => u.ID == 1), "swsh3");
 
             //assert
             Assert.AreEqual(1, cards.Count);

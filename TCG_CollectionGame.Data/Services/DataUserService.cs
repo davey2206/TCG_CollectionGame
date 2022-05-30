@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using TCG_CollectionGame.Data.Interfaces;
 using TCG_CollectionGame.DataContext;
-using TCG_CollectionGame.Enities.Models;
+using TCG_CollectionGame.Entities.Models;
 
 namespace TCG_CollectionGame.Data.Services
 {
@@ -37,6 +38,23 @@ namespace TCG_CollectionGame.Data.Services
         {
             _context.Update(user);
             _context.SaveChanges();
+        }
+
+        public List<User> GetAllUsers(string username)
+        {
+            List<User> users = _context.User.FromSqlRaw("SELECT * FROM [User]").ToList();
+            users.RemoveAll(u => u.Username == username);
+            return users;
+        }
+
+        public void load()
+        {
+            List<User> users = _context.User.FromSqlRaw("SELECT * FROM [User]").ToList();
+            foreach (var user in users)
+            {
+                User u = _context.User.FirstOrDefault(e => e.Username == user.Username);
+                u.Cards = _context.Pokecard.Where(c => c.User.ID == u.ID).ToList();
+            }
         }
     }
 }
