@@ -5,10 +5,10 @@
     <link href="@Url.Content("~/css/Trade.css")" rel="stylesheet" />
 }
 <div class="row">
-    <div class="col-10">
+    <div class="col-10" style="overflow: auto; height: 80vh;">
         @foreach (var trade in ViewData["trades"] as List<TCG_CollectionGame.Entities.Models.Trade>)
         {
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col">
                     <img id="card_img" src="@trade.Card2.CardImg.ToString()" />
                 </div>
@@ -16,18 +16,20 @@
                     <img id="card_img" src="@trade.Card1.CardImg.ToString()" />
                 </div>
                 <div class="col">
-                    <div id="button_container">
-                        <a asp-controller="Home" asp-action="index">
-                            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
-                        </a>
-                        <div id="button_text">Accept</div>
-                    </div>
-                    <div id="button_container">
-                        <a asp-controller="Home" asp-action="index">
-                            <img id="back" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'" />
-                        </a>
-                        <div id="button_text">Reject</div>
-                    </div>
+                    <form asp-action="Accept" asp-controller="Trade">
+                        <div id="button_container" class="mt-5">
+                            <input hidden name="id" value="@trade.ID" />
+                            <input type="image" alt="Submit" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'/">
+                            <div id="button_text">Accept</div>
+                        </div>
+                    </form>
+                    <form asp-action="Reject" asp-controller="Trade">
+                        <div id="button_container" class="mt-5">
+                            <input hidden name="id" value="@trade.ID" />
+                            <input type="image" alt="Submit" src="~/img/Button1.png" width="100%" onmouseover="this.src='/img/Button2.png'" onmouseout="this.src='/img/Button1.png'" onmousedown="this.src='/img/Button3.png'/">
+                            <div id="button_text">Reject</div>
+                        </div>
+                    </form>
                 </div>
             </div>
         }

@@ -69,15 +69,31 @@ namespace TCG_CollectionGame.Controllers
             ViewData["trades"] = _tradeService.GetAllTrades(_userService.GetUser(TempData.Peek("username").ToString()));
             return View();
         }
-
-        public IActionResult Accept()
+        [HttpPost]
+        public IActionResult Accept(int id)
         {
             if (TempData.Peek("username") == null)
             {
                 return RedirectToAction("index", "Login");
             }
 
+            Trade trade = _tradeService.GetTrade(id);
+            _cardService.updateCard(trade);
+            _tradeService.DeleteTrade(id);
+
             return RedirectToAction("Incoming" , "Trade");
+        }
+        [HttpPost]
+        public IActionResult Reject(int id)
+        {
+            if (TempData.Peek("username") == null)
+            {
+                return RedirectToAction("index", "Login");
+            }
+
+            _tradeService.DeleteTrade(id);
+
+            return RedirectToAction("Incoming", "Trade");
         }
     }
 }

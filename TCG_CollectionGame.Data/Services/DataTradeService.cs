@@ -29,13 +29,15 @@ namespace TCG_CollectionGame.Data.Services
 
         public List<Trade> GetAllTrades(User user)
         {
-            List<Trade> trades = new List<Trade>();
-            trades = _context.Trade.FromSqlRaw("SELECT * FROM [Trade] WHERE User2ID = {0}", user.ID).ToList();
-            return trades;
+            _context.User.Load();
+            _context.Pokecard.Load();
+            return _context.Trade.FromSqlRaw("SELECT * FROM [Trade] WHERE User2ID = {0}", user.ID).ToList();
         }
 
         public Trade GetTrade(int id)
         {
+            _context.User.Load();
+            _context.Pokecard.Load();
             return _context.Trade.FromSqlRaw("SELECT * FROM [Trade] WHERE ID = {0}", id).First();
         }
     }

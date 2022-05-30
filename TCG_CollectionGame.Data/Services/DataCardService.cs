@@ -18,12 +18,14 @@ namespace TCG_CollectionGame.Data.Services
 
         public void AddCard(Pokecard pokecard)
         {
+            _context.Pokeset.Load();
             _context.Pokecard.Add(pokecard);
             _context.SaveChanges();
         }
 
         public List<Pokecard> GetAllCards(User user)
         {
+            _context.Pokeset.Load();
             return _context.Pokecard.FromSqlRaw("SELECT * FROM Pokecard WHERE UserID = {0}", user.ID).ToList();
         }
 
@@ -40,7 +42,16 @@ namespace TCG_CollectionGame.Data.Services
 
         public Pokecard GetCards(int cardID)
         {
+            _context.Pokeset.Load();
             return _context.Pokecard.FromSqlRaw("SELECT * FROM pokecard WHERE ID = {0}", cardID).First();
+        }
+
+        public void updateCard(Pokecard card1, Pokecard card2)
+        {
+            _context.User.Load();
+            _context.Pokeset.Load();
+            _context.Database.ExecuteSqlRaw("UPDATE pokecard SET UserID = {0} WHERE ID = {1}", card1.User.ID, card2.ID);
+            _context.Database.ExecuteSqlRaw("UPDATE pokecard SET UserID = {0} WHERE ID = {1}", card2.User.ID, card1.ID);
         }
     }
 }

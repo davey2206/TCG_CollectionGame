@@ -29,8 +29,8 @@ namespace TCG_CollectionGame.Data.Services
 
         public User GetUser(string username)
         {
+            _context.Pokecard.Load();
             User u = _context.User.FirstOrDefault(e => e.Username == username);
-            u.Cards = _context.Pokecard.Where(c => c.User.ID == u.ID).ToList();
             return u;
         }
 
@@ -45,16 +45,6 @@ namespace TCG_CollectionGame.Data.Services
             List<User> users = _context.User.FromSqlRaw("SELECT * FROM [User]").ToList();
             users.RemoveAll(u => u.Username == username);
             return users;
-        }
-
-        public void load()
-        {
-            List<User> users = _context.User.FromSqlRaw("SELECT * FROM [User]").ToList();
-            foreach (var user in users)
-            {
-                User u = _context.User.FirstOrDefault(e => e.Username == user.Username);
-                u.Cards = _context.Pokecard.Where(c => c.User.ID == u.ID).ToList();
-            }
         }
     }
 }

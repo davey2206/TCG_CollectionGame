@@ -12,5 +12,6 @@ namespace TCG_CollectionGame.Business.Interfaces
         public List<Pokecard> GetAllCards(User user);
         public List<string> AddCards(User user, string code);
         public Pokecard GetCards(int cardID);
+        public void updateCard(Trade trade);
     }
 }

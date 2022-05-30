@@ -23,7 +23,7 @@ namespace TCG_CollectionGame.Business.Services
 
         public void DeleteTrade(int id)
         {
-            throw new NotImplementedException();
+            _tradeService.DeleteTrade(id);
         }
 
         public List<Trade> GetAllTrades(User user)
@@ -33,7 +33,7 @@ namespace TCG_CollectionGame.Business.Services
 
         public Trade GetTrade(int id)
         {
-            throw new NotImplementedException();
+            return _tradeService.GetTrade(id);
         }
     }
 }

@@ -7,8 +7,8 @@ namespace TCG_CollectionGame.Data.Interfaces
     {
         List<string> GetCards(string code, User user);
         List<Pokecard> GetAllCards(User user);
-
         void AddCard(Pokecard pokecard);
         Pokecard GetCards(int cardID);
+        void updateCard(Pokecard card1, Pokecard card2);
     }
 }

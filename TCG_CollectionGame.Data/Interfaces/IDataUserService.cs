@@ -13,6 +13,5 @@ namespace TCG_CollectionGame.Data.Interfaces
 
         void UpdateUser(User user);
         List<User> GetAllUsers(string username);
-        void load();
     }
 }

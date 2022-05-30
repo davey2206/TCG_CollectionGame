@@ -75,5 +75,12 @@ namespace TCG_CollectionGame.Business.Services
         {
             return _cardService.GetCards(cardID);
         }
+
+        public void updateCard(Trade trade)
+        {
+            Pokecard card1 = trade.Card1;
+            Pokecard card2 = trade.Card2;
+            _cardService.updateCard(card1, card2);
+        }
     }
 }
