@@ -48,27 +48,6 @@ namespace TCG_CollectionGame.Test
             return mockContext;
         }
 
-        public Mock<TCG_CollectionGameContext> MockDataCards()
-        {
-            var data2 = new List<Pokecard>
-            {
-                new Pokecard {User= new User{ ID=1 }, Pokeset=new Pokeset{ ID=1, SetCode="swsh3" }, CardCode="swsh3-3", CardImg="https://images.pokemontcg.io/swsh3/3.png"},
-                new Pokecard {User= new User{ ID=2 }, Pokeset=new Pokeset{ ID=1, SetCode="swsh3" }, CardCode="swsh3-26", CardImg="https://images.pokemontcg.io/swsh3/26.png"},
-            }.AsQueryable();
-
-            var mockset = new Mock<DbSet<Pokecard>>();
-
-            mockset.As<IQueryable<Pokecard>>().Setup(m => m.Provider).Returns(data2.Provider);
-            mockset.As<IQueryable<Pokecard>>().Setup(m => m.Expression).Returns(data2.Expression);
-            mockset.As<IQueryable<Pokecard>>().Setup(m => m.ElementType).Returns(data2.ElementType);
-            mockset.As<IQueryable<Pokecard>>().Setup(m => m.GetEnumerator()).Returns(data2.GetEnumerator());
-
-            var mockContext = new Mock<TCG_CollectionGameContext>();
-            mockContext.Setup(c => c.Pokecard).Returns(mockset.Object);
-
-            return mockContext;
-        }
-
         [TestMethod]
         public void GetUserTest()
         {
